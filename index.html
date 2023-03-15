@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lay du lieu</title>
+  <style>
+    tr,th,td {
+      border:  1px;
+      border-color: black;
+      background-color: darkgrey;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body onload="display()">
+<h1>khao sat thong tin</h1>
+<hr>
+
+<div>
+<label for="username">Tên hoc vien:</label><br>
+<input type="text" id="username" name="username">
+</div>
+
+<br>
+
+<div>
+<label for="email">Email:</label><br>
+<input type="text" id="email" name="email">
+</div>
+
+<br>
+
+<div>
+<label for="address">Dia chi:</label><br>
+<input type="text" id="address" name="dia chi">
+</div>
+
+<br>
+
+<div>
+<label>Gioi tinh:</label>
+<input type="radio" value="Male"   name="sex" id="male">Male
+<input type="radio" value="Female" name="sex">Female
+</div>
+<input id="value" type="hidden">
+<br>
+
+<input type="button" onclick="add()" value="Add">
+<input type="button" onclick="update()" value="Update">
+
+<br>
+
+<div id="table"></div>
+
+
+</body>
+<script src="classPeople.js"></script>
+
+<script src="indexFunction.js"></script>
+</html>
