@@ -6,30 +6,54 @@ function add() {
     let email = document.getElementById('email').value;
     let address = document.getElementById('address').value;
     let sex = document.querySelector('input[name="sex"]:checked').value;
-    temp.setName(name)
-    temp.setEmail(email)
-    temp.setAddress(address)
-    temp.setSex(sex)
-    people.push(temp)
-    display()
-    reset()
+        temp.setName(name);
+        temp.setEmail(email);
+        temp.setAddress(address);
+        temp.setSex(sex);
+    people.push(temp);
+    display();
+    reset();
 }
 
+
 function edit(i) {
-
-    let replace = document.getElementById('value')
-
+    
     document.getElementById('username').value = people[i].getName();
     document.getElementById('email').value = people[i].getEmail();
     document.getElementById('address').value = people[i].getAddress();
-    document.getElementById('male').value = people[i].getSex();
+
+    if(people[i].getSex() === 'Male'){
+        document.getElementById('male').checked = true;
+    }else {
+        document.getElementById('female').checked = true;
+    }
+    document.getElementById('temp').value = i;
+    document.getElementById('save').style.display= 'none';
+    document.getElementById('update').style.display= 'inline-block';
     
-    people.push(replace)
+    
+    display();
+   
+}
+function update(){
+    
+    let index = document.getElementById('temp').value
+    let name =  document.getElementById('username').value
+    let email = document.getElementById('email').value
+    let address = document.getElementById('address').value
+    let sex = document.querySelector('input[name="sex"]:checked').value;
+    
+    people[index].setName(name);
+    people[index].setEmail(email);
+    people[index].setAddress(address);
+    people[index].setSex(sex);
+    document.getElementById('save').style.display= 'inline-block';
+    document.getElementById('update').style.display= 'none';
     display()
     reset()
 }
 
-function remote(index) {
+function deletes(index) {
     people.splice(index, 1)
     display()
 }
@@ -37,13 +61,13 @@ function remote(index) {
 function display() {
     let display = `
        <tr>
-         <th>stt</th>
-         <th>name</th>
-         <th>email</th>
-         <th>address</th>
-         <th>sex</th>
-         <th>edit</th>
-         <th>delete</th>
+         <th>STT</th>
+         <th>Student name</th>
+         <th>Email</th>
+         <th>Address</th>
+         <th>Sex</th>
+         <th>Edit</th>
+         <th>Delete</th>
        </tr>`
     for (let i = 0; i < people.length; i++) {
         display += `<tr>
@@ -53,7 +77,7 @@ function display() {
                        <td>${people[i].getAddress()}</td>
                        <td>${people[i].getSex()}</td>
                        <td><input type="button" value="Edit" onclick="edit(${i})"></td>
-                       <td><input type="button" value="Delete" onclick="remote(${i})"></td>
+                       <td><input type="button" value="Delete" onclick="deletes(${i})"></td>
                     </tr>`
     }
     document.getElementById('table').innerHTML = `<table>${display}</table>`
@@ -62,6 +86,9 @@ function reset(){
     document.getElementById('username').value = ''
     document.getElementById('email').value = ''
     document.getElementById('address').value = ''
-    document.getElementsByName('sex').value = false
+    let radio = document.getElementsByName('sex')
+    for (let i = 0; i < radio.length; i++) {
+        radio[i].checked = false
+    }
     
 }
