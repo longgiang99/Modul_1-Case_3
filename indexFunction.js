@@ -6,6 +6,7 @@ function add() {
     let email = document.getElementById('email').value;
     let address = document.getElementById('address').value;
     let sex = document.querySelector('input[name="sex"]:checked').value;
+    
         temp.setName(name);
         temp.setEmail(email);
         temp.setAddress(address);
@@ -86,9 +87,9 @@ function reset(){
     document.getElementById('username').value = ''
     document.getElementById('email').value = ''
     document.getElementById('address').value = ''
-    let radio = document.getElementsByName('sex')
-    for (let i = 0; i < radio.length; i++) {
-        radio[i].checked = false
-    }
-    
+    // let radio = document.getElementsByName('sex')
+    // for (let i = 0; i < radio.length; i++) {
+    //     radio[i].checked = false
+    // }
+    //
 }
